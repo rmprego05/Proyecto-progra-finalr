@@ -1,6 +1,6 @@
 from time import sleep 
 import requests
-import utils
+import bot.utils as utils
 
 
 def main():
