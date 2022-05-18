@@ -77,6 +77,7 @@ def decide_move(board: list, player_id: str) -> list:
 
     #Estrategia para ganar siempre en medio para ganar o empatar
 
+
     if board [0][0]== enemigo and board [1][1] == "-":
         return [1,1]
     if board [0][1]== enemigo and board [1][1] == "-":
@@ -94,6 +95,7 @@ def decide_move(board: list, player_id: str) -> list:
     if board [2][2]== enemigo and board [1][1] == "-":
         return [1,1]
 
+
     #Estrategia para siempre empatar si pierdo enmedio 
     #elegir siempre las esquinas
 
@@ -102,16 +104,15 @@ def decide_move(board: list, player_id: str) -> list:
         return random.choice(corner)
 
     #Estrategia para poner de los de enmedio despues de ganar enmedio y si estoy en contra diagonalmente 
-    if board [1][1] == player_id and board [0][0] == enemigo and board [2][2] == enemigo and board [1][0] == "-" and board [1][2]  == "-":
-        middle = [[1,0],[1,2]]
-        return random.choice(middle)
-    if board [1][1] == player_id and board [0][2] == enemigo and board [2][0] == enemigo and board [1][0] == "-" and board [1][2] == "-":
-        middle_c = [[1,0],[1,2]]
-        return random.choice(middle_c)
+    if board [1][1] == player_id and board [0][0] == enemigo and board [2][2] == enemigo and board [1][0] == "-":
+        return [1,0]
+    if board [1][1] == player_id and board [0][0] == enemigo and board [2][2] == enemigo and board [1][2] == "-":
+        return [1,2]
+    if board [1][1] == player_id and board [0][2] == enemigo and board [2][0] == enemigo and board [1][2] == "-":
+        return [1,2]  
+    if board [1][1] == player_id and board [0][2] == enemigo and board [2][0] == enemigo and board [1][0] == "-":
+        return [1,0]  
 
-    
-
-    
     #Posibilidades Gane 
 
     #Paso 2 Ganes Horizanteles,diagonales,vertical de todo el board 
@@ -196,8 +197,8 @@ def decide_move(board: list, player_id: str) -> list:
       #Caso 1 Bloqueo Horizontal de arriba 
     if board [0][0] == enemigo and board [0][1] == enemigo and board [0][2] == "-":
         return [0,2]
-    if board [0][0] == enemigo and board [0][1] == enemigo and board [0][2] == "-":
-        return [0,2]   
+    if board [0][1] == enemigo and board [0][2] == enemigo and board [0][0] == "-":
+        return [0,0]   
     if board [0][0] == enemigo and board [0][2] == enemigo and board [0][1] == "-":
         return [0,1]     
 
